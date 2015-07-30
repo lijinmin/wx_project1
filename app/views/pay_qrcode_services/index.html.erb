@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pay Qrcode Services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Website</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pay_qrcode_services.each do |pay_qrcode_service| %>
+      <tr>
+        <td><%= pay_qrcode_service.website %></td>
+        <td><%= link_to 'Show', pay_qrcode_service %></td>
+        <td><%= link_to 'Edit', edit_pay_qrcode_service_path(pay_qrcode_service) %></td>
+        <td><%= link_to 'Destroy', pay_qrcode_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pay qrcode service', new_pay_qrcode_service_path %>
+<style type="text/css">
+table {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+td {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+  padding: 0;
+  margin: 0;
+  width: 10px;
+  height: 10px;
+}
+td.black { background-color: #000; }
+td.white { background-color: #fff; }
+</style>
+
+<table>
+<% @qr.modules.each_index do |x| %>
+  <tr> 
+  <% @qr.modules.each_index do |y| %>
+   <% if @qr.dark?(x,y) %>
+    <td class="black"/>
+   <% else %>
+    <td class="white"/>
+   <% end %>
+  <% end %>
+  </tr>
+<% end %>
+</table>
